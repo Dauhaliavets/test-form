@@ -9,4 +9,9 @@ interface FeedbackFromProps {
   handleSendRequest: (json: string) => void;
 }
 
-export type { FeedbackFromProps, FormInputs };
+interface IFormTextField {
+  fieldName: 'name' | 'phone' | 'message';
+  placeholder: string;
+}
+
+export type { FeedbackFromProps, FormInputs, IFormTextField };

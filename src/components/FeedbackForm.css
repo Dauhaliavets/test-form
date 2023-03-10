@@ -69,7 +69,12 @@
 .field-error {
   font-size: 12px;
   text-align: left;
-  color: #ff0000;
+  color: #cf0000;
+}
+.field-success {
+  font-size: 12px;
+  text-align: left;
+  color: #008f00;
 }
 
 .button-submit {
@@ -82,6 +87,22 @@
   transition: background-color 0.3s;
 }
 
+.button-submit:disabled {
+  padding: 10px;
+  background-color: #55728f;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  transition: background-color 0.3s;
+}
+
 .button-submit:hover {
+  cursor: pointer;
   background-color: #0061c2;
+}
+
+.button-submit:disabled:hover {
+  cursor: default;
+  background-color: #55728f;
 }
