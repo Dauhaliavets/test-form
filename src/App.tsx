@@ -13,7 +13,9 @@ const App: React.FC = () => {
 
   return (
     <div className="app">
-      <button onClick={openModal}>Open Modal</button>
+      <button onClick={openModal} className="app-button">
+        Open Modal
+      </button>
       {isOpenModal && <FeedbackForm handleClose={closeModal} />}
     </div>
   );

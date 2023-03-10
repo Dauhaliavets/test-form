@@ -31,32 +31,54 @@ export const FeedbackForm: React.FC<FeedbackFromProps> = ({ handleClose }) => {
   return (
     <div className="modal">
       <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <button className="form__button button-close" onClick={handleClose}>
-          Close
-        </button>
+        <div className="form__header">
+          <h3 className="form__header header-title">Feedback Form</h3>
+          <button className="form__button button-close" onClick={handleClose}></button>
+        </div>
 
-        <InputMask
-          type="text"
-          mask="+7(999)999-99-99"
-          maskPlaceholder="+7(XXX)XXX-XX-XX"
-          maskChar=""
-          {...register('phone', formValidationRules.phone)}
-        />
-        <span>{errors.phone && errors.phone.message}</span>
+        <div className="form__field">
+          <label htmlFor="phone" className="field-label">
+            Phone
+          </label>
+          <InputMask
+            id="phone"
+            className="field-input"
+            type="text"
+            mask="+7(999)999-99-99"
+            placeholder="+7(XXX)XXX-XX-XX"
+            maskChar=""
+            {...register('phone', formValidationRules.phone)}
+          />
+          <span className="field-error">{errors.phone && errors.phone.message}</span>
+        </div>
 
-        <input
-          type="text"
-          placeholder="Name"
-          {...register('name', formValidationRules.name)}
-        />
-        <span>{errors.name && errors.name.message}</span>
+        <div className="form__field">
+          <label htmlFor="name" className="field-label">
+            Name
+          </label>
+          <input
+            id="name"
+            className="field-input"
+            type="text"
+            placeholder="Name"
+            {...register('name', formValidationRules.name)}
+          />
+          <span className="field-error">{errors.name && errors.name.message}</span>
+        </div>
 
-        <input
-          type="text"
-          placeholder="Message"
-          {...register('message', formValidationRules.message)}
-        />
-        <span>{errors.message && errors.message.message}</span>
+        <div className="form__field">
+          <label htmlFor="message" className="field-label">
+            Message
+          </label>
+          <input
+            id="message"
+            className="field-input"
+            type="text"
+            placeholder="Message"
+            {...register('message', formValidationRules.message)}
+          />
+          <span className="field-error">{errors.message && errors.message.message}</span>
+        </div>
 
         <button type="submit" className="form__button button-submit">
           Submit
