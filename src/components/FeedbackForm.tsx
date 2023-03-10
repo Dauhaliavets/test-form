@@ -5,9 +5,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import InputMask from 'react-input-mask';
 
 import { formValidationRules } from '../constants/formValidationRules';
-import { FeedbackFromProps, FromInputs } from './feedbackForm.types';
+import { FeedbackFromProps, FormInputs } from '../types/feedbackForm.types';
+import { transformPhone } from '../utils/transformPhone';
 
-export const FeedbackForm: React.FC<FeedbackFromProps> = ({ handleClose }) => {
+export const FeedbackForm: React.FC<FeedbackFromProps> = ({
+  handleClose,
+  handleSendRequest,
+}) => {
   const {
     register,
     handleSubmit,
@@ -20,13 +24,13 @@ export const FeedbackForm: React.FC<FeedbackFromProps> = ({ handleClose }) => {
     },
   });
 
-  const onSubmit: SubmitHandler<FromInputs> = (fields) => {
+  const onSubmit: SubmitHandler<FormInputs> = (fields) => {
     if (isValid) {
-      const updatedPhone = fields.phone.replaceAll(/[()-]/g, '');
-      console.log('fields: ', { ...fields, phone: updatedPhone });
+      const transformedPhone = transformPhone(fields.phone);
+      const json = JSON.stringify({ ...fields, phone: transformedPhone });
+      handleSendRequest(json);
     }
   };
-  console.log('errors: ', errors);
 
   return (
     <div className="modal">

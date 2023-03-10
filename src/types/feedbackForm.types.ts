@@ -1,4 +1,4 @@
-interface FromInputs {
+interface FormInputs {
   phone: string;
   name: string;
   message: string;
@@ -6,6 +6,7 @@ interface FromInputs {
 
 interface FeedbackFromProps {
   handleClose: () => void;
+  handleSendRequest: (json: string) => void;
 }
 
-export type { FeedbackFromProps, FromInputs };
+export type { FeedbackFromProps, FormInputs };
